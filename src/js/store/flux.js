@@ -18,17 +18,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+		
+			addFav:(name,id)=>{
+				const store = getStore();
+				console.log("elem add to fav",name)
+				
+				setStore({favoritos:[...store.favoritos,{name,id}]})
+			},
 			deleteFav:(index)=>{
 				const store = getStore();
 				setStore({favoritos:[...store.favoritos.filter((fav)=>fav.id !== index)]})
 			},
-			addFav:(name)=>{
-				const store = getStore();
-				console.log("elem add to fav",name)
-				
-				setStore({favoritos:[...store.favoritos,{name}]})
-			},
-
 			getPersonajes: ()=>{
 				fetch("https://www.swapi.tech/api/people")
 				.then(response=>response.json())
